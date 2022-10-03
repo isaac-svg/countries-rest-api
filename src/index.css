@@ -330,7 +330,7 @@ option {
 .lightTheme .borders-wrapper {
   color: var(--Light-Mode-Text);
 }
-.lightTheme .borders-wrapper .border {
+.lightTheme .borders-wrapper .border .link {
   color: var(--Light-Mode-Text);
 }
 

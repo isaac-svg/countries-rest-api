@@ -19,8 +19,8 @@ const SingleCountry = () => {
       if (!results.ok) throw new Error("Results not found");
       const res = await results.json();
       const single = res.find((country) => country.name.common === countryName);
-      setCountries(single);
       setLoading(false);
+      setCountries(single);
     } catch (error) {}
   };
   useEffect(() => {
@@ -31,46 +31,55 @@ const SingleCountry = () => {
 
   return (
     <section className="wrapper">
-      {isLoading && <Spinner />}
       <Link className="back" to="/">
         <ArrowBackSharp /> Back
       </Link>
       <section className="singleContry-wrapper">
-        <article className="content">
-          <div>
-            <div className="flag">
-              <img src={countries?.flags?.png} alt={countries?.name?.common} />
-            </div>
-            <div className="description">
-              <h2 className="country-Name">{countries?.name?.common}</h2>
-              <div className="details">
-                <div className="left-details">
-                  <h4>Native Name:{countries?.name?.common}</h4>
-                  <h4>Population:{countries?.population}</h4>
-                  <h4>Region:{countries?.region}</h4>
-                  <h4>Sub Region:{countries?.subregion}</h4>
-                  <h4>Capital:{countries?.capital}</h4>
-                </div>
-                <div className="right-details">
-                  <h4>Top Level Domain: {countries?.topLevelDomain}</h4>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <article className="content">
+            <div>
+              <div className="flag">
+                <img
+                  src={countries?.flags?.png}
+                  alt={countries?.name?.common}
+                />
+              </div>
+              <div className="description">
+                <h2 className="country-Name">{countries?.name?.common}</h2>
+                <div className="details">
+                  <div className="left-details">
+                    <h4>Native Name:{countries?.name?.common}</h4>
+                    <h4>Population:{countries?.population}</h4>
+                    <h4>Region:{countries?.region}</h4>
+                    <h4>Sub Region:{countries?.subregion}</h4>
+                    <h4>Capital:{countries?.capital}</h4>
+                  </div>
+                  <div className="right-details">
+                    <h4>Top Level Domain: {countries?.topLevelDomain}</h4>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          {/*  */}
-          <span className=" borders-wrapper">
-            Border Countries:
-            {countries?.borders?.map((border) => {
-              return (
-                <div key={border?.capital}>
-                  <div className="border">
-                    <Link to={`/`}> {border}</Link>
+            {/*  */}
+            <span className=" borders-wrapper">
+              Border Countries:
+              {countries?.borders?.map((border) => {
+                return (
+                  <div key={border?.capital}>
+                    <div className="border">
+                      <Link className="link" to={`/`}>
+                        {" "}
+                        {border}
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </span>
-        </article>
+                );
+              })}
+            </span>
+          </article>
+        )}
       </section>
     </section>
   );
