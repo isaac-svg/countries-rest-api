@@ -1,9 +1,12 @@
 {
+  "homepage": "https://isaac-svg.github.io/countries-rest-api",
   "name": "world-api",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -19,6 +22,7 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
+    "gh-pages": "^4.0.0",
     "vite": "^3.1.0"
   }
 }

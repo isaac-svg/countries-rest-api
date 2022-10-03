@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../context/ThemeProvider";
 import CountriesPage from "./CountriesPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import SingleCountry from "./SingleCountry";
 import Navbar from "./Navbar";
 //
@@ -14,13 +14,13 @@ const MainPage = () => {
   }
   return (
     <main className={isDark ? "darkTheme" : "lightTheme"}>
-      <BrowserRouter>
+      <HashRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<CountriesPage />} />
           <Route path="/:countryName" element={<SingleCountry />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </main>
   );
 };

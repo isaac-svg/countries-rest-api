@@ -51,7 +51,7 @@ const CountriesPage = () => {
       <section className="home-page">
         {countries?.map((country) => {
           return (
-            <article className="country">
+            <article className="country" key={country.capital}>
               <Link to={`/${country.name.common}`}>
                 <img src={country.flags.png} alt={country.name.common} />
                 <div className="description">
